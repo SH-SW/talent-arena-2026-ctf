@@ -1,0 +1,16 @@
+services:
+  mwc-companion:
+    image: mwc-companion:release
+    container_name: mwc-companion
+    network_mode: host
+    environment:
+      - PORT=8080
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    tmpfs:
+      - /tmp:noexec,nosuid,nodev,size=10m
+    restart: unless-stopped
+
